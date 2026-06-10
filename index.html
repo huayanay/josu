@@ -1,0 +1,455 @@
+﻿<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instituto Manuel Scorza Torre | Arquitectura de Plataforma</title>
+    <meta
+      name="description"
+      content="Servicios TI, admisión, matrícula, titulación y más para el instituto educativo."
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <style>
+      body {
+        font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background: linear-gradient(135deg, #0ea5e9 0%, #f97316 100%);
+        color: #111827;
+      }
+      .site-header {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+      }
+      .header-menu button {
+        min-width: 120px;
+      }
+      .hero {
+        position: relative;
+        min-height: 70vh;
+        background: linear-gradient(135deg, rgba(15, 23, 42, 0.72), rgba(148, 163, 184, 0.18)),
+          url("img/slider-1.jpg") center/cover no-repeat;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.35);
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        color: #ffffff;
+      }
+      .hero-title {
+        font-size: clamp(2.6rem, 4vw, 4.4rem);
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      .hero-subtitle {
+        max-width: 760px;
+        color: rgba(255, 255, 255, 0.84);
+      }
+      .hero .btn {
+        min-width: 170px;
+      }
+      .hero .btn-cta {
+        min-width: 170px;
+      }
+      .site-header .brand-title {
+        font-size: 1rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .site-header .brand-subtitle {
+        font-size: 0.78rem;
+        color: #2563eb;
+        letter-spacing: 0.08em;
+        font-weight: 700;
+      }
+      .logo-img {
+        height: 72px;
+        width: auto;
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 28px rgba(15, 23, 42, 0.15);
+      }
+      .program-card,
+      .news-card,
+      .service-card {
+        background: #fff;
+        border-radius: 1.25rem;
+        box-shadow: 0 18px 35px rgba(15, 23, 42, 0.08);
+      }
+      .program-card {
+        border: 1px solid rgba(107, 147, 211, 0.18);
+      }
+      .program-card img {
+        border-top-left-radius: 1.25rem;
+        border-top-right-radius: 1.25rem;
+        height: 230px;
+        object-fit: cover;
+      }
+      .program-card .card-body {
+        padding: 1.5rem;
+      }
+      .program-card h5 {
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .program-card .btn {
+        min-width: 160px;
+      }
+      .program-card h5,
+      .service-card h6,
+      .section-heading {
+        color: #0f172a;
+      }
+      .news-card {
+        border: 1px solid rgba(59, 130, 246, 0.18);
+        background: #f8fafc;
+      }
+      .news-card .news-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.35rem 0.8rem;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.08);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #1f2937;
+      }
+      .news-card .card-body {
+        padding: 1.4rem;
+      }
+      .news-card h6 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-top: 1rem;
+        color: #111827;
+      }
+      .news-card p {
+        margin-bottom: 0;
+        color: #334155;
+      }
+      .news-card .news-badge {
+        color: #0f172a;
+        background: #dbeafe;
+      }
+      .footer {
+        background: #0f172a;
+        color: #e2e8f0;
+      }
+      .footer h5,
+      .footer h6 {
+        color: #f8fafc;
+      }
+      .footer p,
+      .footer a,
+      .footer .text-muted {
+        color: #cbd5e1 !important;
+      }
+      .footer a:hover {
+        color: #93c5fd;
+      }
+      .footer .text-center {
+        color: #94a3b8;
+      }
+      .services-row {
+        margin-top: -4rem;
+      }
+      .service-card {
+        background: #fff;
+        border: 2px solid rgba(59, 130, 246, 0.2);
+        border-radius: 1.25rem;
+        padding: 1.75rem 1.4rem;
+        text-align: center;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+      .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 24px 50px rgba(15, 23, 42, 0.12);
+      }
+      .service-card i {
+        font-size: 2.2rem;
+        color: #2563eb;
+      }
+      .service-card h6 {
+        margin-top: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .service-card p {
+        margin-bottom: 0;
+        color: #475569;
+        font-size: 0.95rem;
+      }
+      .section-heading {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+      .footer {
+        background: #111827;
+        color: #d1d5db;
+      }
+      .footer a {
+        color: #d1d5db;
+      }
+      .footer a:hover {
+        color: #60a5fa;
+      }
+      @media (max-width: 767.98px) {
+        .hero {
+          min-height: 55vh;
+        }
+        .hero-title {
+          font-size: 2.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header py-3">
+      <div class="container d-flex align-items-center justify-content-between flex-wrap gap-3">
+        <div class="d-flex align-items-center gap-3">
+          <img src="img/card-4.jpg" alt="Logo Instituto" class="logo-img" />
+          <div>
+            <div class="brand-title">INSTITUTO DE EDUCACIÓN SUPERIOR</div>
+            <div class="brand-subtitle">TECNOLÓGICO PÚBLICO MANUEL SCORZA TORRE</div>
+          </div>
+        </div>
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <nav class="header-menu d-none d-lg-flex gap-2">
+            <button class="btn btn-sm btn-outline-primary" onclick="scrollToSection('programas')">Programas</button>
+            <button class="btn btn-sm btn-outline-primary" onclick="scrollToSection('noticias')">Noticias</button>
+            <button class="btn btn-sm btn-outline-primary" onclick="scrollToSection('servicios')">Servicios</button>
+            <button class="btn btn-sm btn-outline-primary" onclick="scrollToSection('contacto')">Contacto</button>
+          </nav>
+          <a href="#" class="btn btn-success btn-lg rounded-circle shadow-sm" onclick="openWhatsApp(); return false;">
+            <i class="bi bi-whatsapp"></i>
+          </a>
+          <button class="btn btn-outline-secondary btn-lg rounded-circle d-lg-none shadow-sm">
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero d-flex align-items-center" id="inicio">
+      <div class="container hero-content">
+        <div class="row">
+          <div class="col-lg-10">
+            <h1 class="hero-title">Arquitectura de plataforma y servicios TI</h1>
+            <p class="hero-subtitle mt-4 mb-4">
+              Soluciones digitales para la gestión académica, la comunicación institucional y el soporte de ambientes virtuales.
+            </p>
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <a href="#" class="btn btn-warning btn-lg btn-cta shadow" onclick="scrollToSection('programas'); return false;">Ver Programas</a>
+              <button class="btn btn-outline-light btn-lg btn-cta shadow" onclick="scrollToSection('servicios')">Ver Servicios</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container py-5" id="programas">
+      <div class="text-center mb-5">
+        <p class="text-primary fw-semibold mb-2">Programas del instituto</p>
+        <h2 class="section-heading">Nuestros programas más importantes</h2>
+        <p class="text-muted mx-auto" style="max-width: 720px;">
+          Descubre los programas académicos del instituto, con énfasis en tecnologías, agropecuaria y construcción.</p>
+      </div>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="program-card h-100">
+            <img src="img/slider-2.jpg" class="card-img-top" alt="Construcción Civil" />
+            <div class="card-body text-center">
+              <h5>Construcción Civil</h5>
+              <a href="#" class="btn btn-primary mt-3" onclick="openProgram('Construcción Civil'); return false;">Ver programa</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="program-card h-100">
+            <img src="img/slider-3.jpg" class="card-img-top" alt="Producción Agropecuaria" />
+            <div class="card-body text-center">
+              <h5>Producción Agropecuaria</h5>
+              <a href="#" class="btn btn-primary mt-3" onclick="openProgram('Producción Agropecuaria'); return false;">Ver programa</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="program-card h-100">
+            <img src="img/slider-1.jpg" class="card-img-top" alt="Arquitectura de Plataformas TI" />
+            <div class="card-body text-center">
+              <h5>Arquitectura de Plataformas y Servicios TI</h5>
+              <a href="#" class="btn btn-primary mt-3" onclick="openProgram('Arquitectura de Plataformas y Servicios TI'); return false;">Ver programa</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container pb-5" id="noticias">
+      <div class="row align-items-center mb-5">
+        <div class="col-lg-6">
+          <p class="text-primary fw-semibold mb-2">Noticias destacadas</p>
+          <h2 class="section-heading">Mantente informado con lo último del instituto</h2>
+        </div>
+      </div>
+      <div class="row row-cols-1 row-cols-lg-2 g-4">
+        <div class="col">
+          <div class="news-card h-100">
+            <div class="card-body">
+              <span class="news-badge">Noticias</span>
+              <h6 class="mt-3">Resultado preliminar de la evaluación curricular del personal docente</h6>
+              <p>Revisa las listas publicadas y conoce el siguiente paso para la publicación de resultados finales.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="news-card h-100">
+            <div class="card-body">
+              <span class="news-badge">Noticias</span>
+              <h6 class="mt-3">Cuadro del proceso de contratación de docentes regulares 2026</h6>
+              <p>Información oficial sobre plazos, requisitos y cronograma de selección para docentes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container services-row pb-5" id="servicios">
+      <div class="row g-4 justify-content-center">
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="service-card h-100">
+            <i class="bi bi-people-fill"></i>
+            <h6>Admisión</h6>
+            <p>Todo el proceso de ingreso en línea para nuevos estudiantes.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="service-card h-100">
+            <i class="bi bi-pencil-fill"></i>
+            <h6>Matrícula</h6>
+            <p>Gestión de cursos, horarios y pagos de forma rápida.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="service-card h-100">
+            <i class="bi bi-mortarboard-fill"></i>
+            <h6>Titulación</h6>
+            <p>Sistema para seguimiento y cierre de procesos profesionales.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="service-card h-100">
+            <i class="bi bi-lightbulb-fill"></i>
+            <h6>EVA</h6>
+            <p>Entorno virtual de aprendizaje para docentes y estudiantes.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="service-card h-100">
+            <i class="bi bi-book-half"></i>
+            <h6>Biblioteca</h6>
+            <p>Acceso virtual a recursos académicos y materiales actualizados.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="service-card h-100">
+            <i class="bi bi-building"></i>
+            <h6>Mesa de partes</h6>
+            <p>Recepción y seguimiento de solicitudes institucionales.</p>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <div class="service-card h-100">
+            <i class="bi bi-briefcase-fill"></i>
+            <h6>Bolsa de trabajo</h6>
+            <p>Conexión de estudiantes con oportunidades laborales reales.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container pb-5">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <h2 class="section-heading">Una experiencia digital más profesional</h2>
+          <p class="text-muted">
+            LAa organnizacion de los docentes y las buenas practicas y asi que el instituto comunique sus servicios de forma clara, visual y confiable.
+          </p>
+          <p class="text-muted">
+            Menú de acceso rápido, hero impactante y tarjetas de servicio que muestran las áreas clave de la plataforma.
+          </p>
+        </div>
+        <div class="col-lg-6">
+          <img src="img/slider-2.jpg" class="img-fluid rounded-4 shadow" alt="Servicios TI" />
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer py-5" id="contacto">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-md-4">
+            <h5 class="fw-bold text-white"> IESTP MANUEL SCORZA TORRE</h5>
+            <p class="text-muted">Instituto de educación superior tecnológico público con sistemas de gestión y servicios digitales.</p>
+          </div>
+          <div class="col-md-4">
+            <h6 class="text-white">Enlaces</h6>
+            <ul class="list-unstyled">
+              <li><a href="#">Admisión</a></li>
+              <li><a href="#">Matrícula</a></li>
+              <li><a href="#">precentes</a></li>
+              <li><a href="#">IA</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h6 class="text-white">Contacto</h6>
+            <p class="text-muted mb-1"><i class="bi bi-whatsapp me-2"></i>+51 999 999 999</p>
+            <p class="text-muted mb-1"><i class="bi bi-envelope-fill me-2"></i>contacto@example.com</p>
+          </div>
+        </div>
+        <div class="text-center mt-4 text-muted">© 2026 Instituto Manuel Scorza Torre</div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      function scrollToSection(id) {
+        const section = document.getElementById(id);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+
+      function openWhatsApp() {
+        alert("Contacto WhatsApp: +51 999 999 999. Abriendo chat...");
+      }
+
+      function openProgram(name) {
+        alert("Seleccionaste el programa: " + name + ". Pronto tendrás más detalles disponibles.");
+      }
+    </script>
+  </body>
+</html>
